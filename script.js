@@ -29,16 +29,40 @@ function round(playerSelection, computerSelection) {
             return "You Lose. Paper beats Rock.";
         }
         else {
-            return "Tie."
+            return "Tie.";
         }
     }
 
     //if player chose paper go here
+    if(playerSelection === 'paper') {
         //if computer chose rock, return "You Win! Paper beats Rock."
+        if(computerSelection === 'Rock') {
+            return "You Win! Paper beats Rock.";
+        }
         //if computer chose scissors, return "You Lose. Scissors beats Paper."
+        else if(computerSelection === 'Scissors') {
+            return "You Lose. Scissors beats Paper.";
+        }
+        else {
+            return "Tie.";
+        }
+    }
+        
 
     //if player chose scissors go here
-      //if computer chose paper, return "You Win! Scissors beats Paper."
+    if(playerSelection === 'scissors') {
+        //if computer chose paper, return "You Win! Scissors beats Paper."
+        if(computerSelection === 'Paper') {
+            return "You Win! Scissors beats Paper.";
+        }
         //if computer chose rock, return "You Lose. Rock beats Scissors."
+        else if(computerSelection === 'Rock') {
+            return "You Lose. Rock beats Scissors.";
+        }
+        else {
+            return "Tie.";
+        }
+    }
+    
 } 
-console.log(computerPlay());
+console.log(round('rOcK', computerPlay()));
