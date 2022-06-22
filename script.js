@@ -83,14 +83,16 @@ function game() {
     let userinput;
     //var to hold result of each round
     let result;
+    //var holds # of losses
     let loses = 0;
-    //boolean var that tells if input is valid
     //for loop to create a 5 round game
     for(let i = 0; i < 5; i++) {
         //gets user input
-        //checks if it is valid
+        //checks if it is not valid
+        //loops through until given valid input
         //plays round
         //if result has the term 'Win', then add 1 to the wins var
+        //if result has the term 'Lose', then add 1 to the loses var
         userinput = prompt('enter your move: ');
         while(notValid(userinput)){
             userinput = prompt('Invalid move! Try again: ');
@@ -109,8 +111,9 @@ function game() {
     }
        
 
-    //if wins is greater than or equal to 3 then player wins
-    //else player loses, computer wins.
+    //if wins is greater than loses then player wins
+    //if loses greater than wins, player loses
+    //else player and computer tie
     if(wins > loses) {
         console.log('Congrats, You Won!');
     }
