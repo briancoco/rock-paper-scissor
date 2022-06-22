@@ -104,7 +104,7 @@ function game() {
         }
         console.log(result);
         console.log('Win Counter: ' + wins);
-
+        console.log('');
 
     }
        
