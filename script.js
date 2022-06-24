@@ -1,4 +1,7 @@
 let winner = false;
+let wins = 0;
+let loses = 0;
+let score = 0;
 function computerPlay() {
     //create var that will hold a random number from 1 - 3
     let randNum = Math.floor(Math.random() * 3 + 1)
@@ -24,15 +27,18 @@ function round(playerSelection, computerSelection) {
     if(playerSelection === 'rock') {
         //if computer chose scissors, return "You Win! Rock beats Scissors."
         if(computerSelection === 'Scissors') {
-            div.textContent = "You Win! Rock beats Scissors.";
             winner = true;
+            div.textContent = "You Win! Rock beats Scissors." ;
+            
         }
         //if computer chose paper, return "You Lose. Paper beats Rock."
         else if(computerSelection === 'Paper') {
-            div.textContent = "You Lose. Paper beats Rock.";
+            div.textContent = "You Lose. Paper beats Rock." ;
         }
         else {
-            div.textContent = "Tie.";
+            winner = 999;
+            div.textContent = "Tie." ;
+            
         }
     }
 
@@ -49,6 +55,7 @@ function round(playerSelection, computerSelection) {
         }
         else {
             div.textContent = "Tie.";
+            winner = 999;
         }
     }
         
@@ -66,9 +73,34 @@ function round(playerSelection, computerSelection) {
         }
         else {
             div.textContent = "Tie.";
+            winner = 999;
         }
     }
+    if(winner===true) {
+        wins++;
+        div2.textContent = `${wins}`;
+    }
+    else if(winner===false){
+        loses++;
+    }
     
+    if(score === 5) {
+        if(wins>loses) {
+            div.textContent = 'You won the game!!! CONGRATS';
+        }
+        else if(wins<loses) {
+            div.textContent = 'You lost, better luck next time :(';
+        }
+        else {
+            div.textContent = 'you tied!!!!';
+        }
+
+        wins = 0;
+        loses = 0;
+        score = 0;
+        div2.textContent = `${wins}`;
+    }
+    score++;
 } 
 
 function notValid(userinput) {
@@ -132,8 +164,6 @@ function game() {
     
    
 }
-
-
 
 const div = document.querySelector('.result');
 const div2 = document.querySelector('.score');
