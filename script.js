@@ -1,3 +1,4 @@
+let winner = false;
 function computerPlay() {
     //create var that will hold a random number from 1 - 3
     let randNum = Math.floor(Math.random() * 3 + 1)
@@ -18,18 +19,20 @@ function computerPlay() {
 
 function round(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
+    winner = false;
     //if player chose rock go here
     if(playerSelection === 'rock') {
         //if computer chose scissors, return "You Win! Rock beats Scissors."
         if(computerSelection === 'Scissors') {
-            return "You Win! Rock beats Scissors.";
+            div.textContent = "You Win! Rock beats Scissors.";
+            winner = true;
         }
         //if computer chose paper, return "You Lose. Paper beats Rock."
         else if(computerSelection === 'Paper') {
-            return "You Lose. Paper beats Rock.";
+            div.textContent = "You Lose. Paper beats Rock.";
         }
         else {
-            return "Tie.";
+            div.textContent = "Tie.";
         }
     }
 
@@ -37,14 +40,15 @@ function round(playerSelection, computerSelection) {
     if(playerSelection === 'paper') {
         //if computer chose rock, return "You Win! Paper beats Rock."
         if(computerSelection === 'Rock') {
-            return "You Win! Paper beats Rock.";
+            div.textContent = "You Win! Paper beats Rock.";
+            winner = true;
         }
         //if computer chose scissors, return "You Lose. Scissors beats Paper."
         else if(computerSelection === 'Scissors') {
-            return "You Lose. Scissors beats Paper.";
+            div.textContent = "You Lose. Scissors beats Paper.";
         }
         else {
-            return "Tie.";
+            div.textContent = "Tie.";
         }
     }
         
@@ -53,14 +57,15 @@ function round(playerSelection, computerSelection) {
     if(playerSelection === 'scissors') {
         //if computer chose paper, return "You Win! Scissors beats Paper."
         if(computerSelection === 'Paper') {
-            return "You Win! Scissors beats Paper.";
+            div.textContent = "You Win! Scissors beats Paper.";
+            winner = true;
         }
         //if computer chose rock, return "You Lose. Rock beats Scissors."
         else if(computerSelection === 'Rock') {
-            return "You Lose. Rock beats Scissors.";
+            div.textContent = "You Lose. Rock beats Scissors.";
         }
         else {
-            return "Tie.";
+            div.textContent = "Tie.";
         }
     }
     
@@ -114,6 +119,7 @@ function game() {
     //if wins is greater than loses then player wins
     //if loses greater than wins, player loses
     //else player and computer tie
+    
     if(wins > loses) {
         console.log('Congrats, You Won!');
     }
@@ -123,6 +129,20 @@ function game() {
     else {
         console.log('You lose. Better luck next time :(');
     }
+    
+   
 }
 
-game();
+
+
+const div = document.querySelector('.result');
+const div2 = document.querySelector('.score');
+
+const rock = document.querySelector('.rock');
+rock.addEventListener('click', () => round('rock', computerPlay()));
+
+const paper = document.querySelector('.paper');
+paper.addEventListener('click', () => round('paper', computerPlay()));
+
+const scissors = document.querySelector('.scissors');
+scissors.addEventListener('click', () => round('scissors', computerPlay()));
